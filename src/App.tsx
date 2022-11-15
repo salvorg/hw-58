@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Button from "./components/Button/Button";
+import Alert from "./components/Alert/Alert";
 
 function App() {
+  const [showAlert, setShowAlert] = useState(true);
+  const [showAlert2, setShowAlert2] = useState(true);
+
+  const closeAlert = () => setShowAlert(false);
+  const closeAlert2 = () => setShowAlert2(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      <Button/>
+      <Alert show={showAlert} type="warning" onDismiss={closeAlert} clickDismissible/>
+      <Alert show={showAlert2} type="success" onDismiss={closeAlert2}/>
     </div>
   );
 }
